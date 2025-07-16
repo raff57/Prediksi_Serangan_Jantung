@@ -1,0 +1,58 @@
+## Conceptual Problems
+
+*Jawab pertanyaan berikut:*
+
+1. Jelaskan latar belakang adanya bagging dan cara kerja bagging !
+
+2. Jelaskan perbedaan cara kerja algoritma Random Forest dengan algoritma boosting yang Anda pilih !
+
+3. Jelaskan apa yang dimaksud dengan Cross Validation !
+
+*Jawaban dari Pertanyaan 
+
+1. Bagging dikembangkan untuk mengatasi beberapa permasalahan umum 
+dalam machine learning, seperti overfitting, variansi yang tinggi, dan kinerja yang kurang optimal 
+dari model-model sederhana seperti decision tree. Overfitting terjadi ketika model terlalu menyesuaikan 
+diri dengan data latih, sehingga gagal memberikan hasil yang baik pada data baru. Selain itu, model 
+yang memiliki variansi tinggi dapat menghasilkan prediksi yang sangat berbeda hanya karena sedikit 
+perubahan dalam data. Untuk menjawab masalah ini, Bagging menggunakan pendekatan ensemble learning, 
+yang menggabungkan beberapa model lemah menjadi satu model yang lebih akurat dan andal.
+
+Secara teknis, Bagging bekerja melalui teknik bootstrap sampling, yaitu mengambil beberapa subset 
+acak dari data pelatihan dengan teknik sampling yang memperbolehkan pengembalian. Setiap subset data 
+digunakan untuk melatih satu model biasanya model yang sama secara independen. Model-model ini 
+disebut sebagai base learner atau weak learner. Setelah seluruh model dilatih, hasil prediksi digabungkan 
+untuk menghasilkan keputusan akhir. Untuk masalah regresi, prediksi digabungkan dengan cara menghitung rata-rata, 
+sementara untuk klasifikasi, keputusan akhir ditentukan berdasarkan voting mayoritas. Dengan cara ini, Bagging 
+dapat mengurangi variansi model dan menghasilkan performa prediksi yang lebih stabil.
+
+2. Random Forest dan XGBoost merupakan algoritma machine learning berbasis decision tree, 
+namun perbedaan utama terletak pada pendekatan ensemble yang digunakan. Random Forest menggunakan 
+metode bagging, yaitu membuat banyak pohon keputusan secara paralel dengan data subset yang diambil 
+secara acak dengan pengembalian. Setiap tree berdiri sendiri tanpa saling mempengaruhi, dan 
+prediksi akhirnya ditentukan dengan voting mayoritas untuk klasifikasi atau rata-rata untuk regresi. 
+Pendekatan ini bertujuan untuk mengurangi variansi dan menciptakan model yang lebih stabil dan tahan 
+terhadap overfitting, tanpa memerlukan banyak penyesuaian parameter.
+
+Berbeda dengan itu, XGBoost Extreme Gradient Boosting mengadopsi strategi boosting, di mana setiap 
+pohon dibangun secara bertahap dan fokus memperbaiki kesalahan prediksi dari pohon sebelumnya. Model 
+ini bekerja secara aditif, sehingga hasil akhir lebih akurat dan mampu menyeimbangkan bias dan variansi 
+dengan baik. Keunggulan lainnya, XGBoost menyediakan fitur regularisasi untuk menghindari overfitting 
+serta berbagai optimisasi teknis seperti pruning dan pemilihan split terbaik secara efisien. Meskipun 
+memerlukan tuning parameter yang lebih kompleks, XGBoost dikenal menghasilkan performa yang tinggi, 
+khususnya dalam kompetisi data science.
+
+Secara garis besar, Random Forest lebih ramah bagi pemula karena sederhana dan cepat diterapkan, sedangkan 
+XGBoost memberikan hasil yang lebih presisi namun menuntut pemahaman yang lebih teknis terhadap proses 
+pelatihannya.
+
+3. Cross Validation yang digunakan dalam proses ini adalah K-Fold Cross Validation, yaitu sebuah teknik 
+evaluasi model yang bertujuan untuk mengukur kinerja model secara lebih andal dan stabil. Dalam metode ini, 
+dataset dibagi menjadi k bagian yang kurang lebih sama besar (disebut folds). Model kemudian dilatih dan 
+diuji sebanyak k kali. Pada setiap iterasi, k–1 bagian digunakan untuk melatih model, sementara satu bagian 
+sisanya digunakan untuk menguji performa model. Proses ini terus berulang hingga setiap bagian pernah menjadi 
+data uji satu kali. Skor evaluasi dari setiap iterasi (misalnya F1-score) kemudian dirata-ratakan, dan standar 
+deviasinya dihitung untuk melihat konsistensi model. Dalam kasus yang digunakan, dilakukan 3-Fold Cross Validation 
+dengan menggunakan metrik F1-score untuk mengevaluasi model Random Forest. Teknik ini efektif dalam mengurangi 
+risiko overfitting dan memberikan gambaran yang lebih menyeluruh mengenai kemampuan generalisasi model terhadap 
+data yang belum pernah dilihat.
